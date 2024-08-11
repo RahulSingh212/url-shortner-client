@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-const ContactUsPage = () => {
+const AboutUsPage = () => {
 
   return (
     <div>
-      <h1>Contact Us Page</h1>
-      <p>Welcome to the Contact Us Page!</p>
+      <h1>About Us Page</h1>
+      <p>Welcome to the About Us Page!</p>
     </div>
   );
 };
 
-export default ContactUsPage;
+export default AboutUsPage;

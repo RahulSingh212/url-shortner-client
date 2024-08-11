@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 const CareerPage = () => {
 
   return (
     <div>
       <h1>Career Page</h1>
-      <p>Welcome to the Brand Page!</p>
+      <p>Welcome to the Career Page!</p>
     </div>
   );
 };
