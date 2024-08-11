@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-background; 
+}
+
+.navsection {
+    @apply cursor-pointer hover:text-yellow-500;
+}
