@@ -9,3 +9,15 @@ body {
 .navsection {
     @apply cursor-pointer hover:text-yellow-500;
 }
+
+.pageContainerDiv {
+    @apply relative w-[100%] flex flex-col h-full align-middle items-center
+}
+
+.pageH1Head {
+    @apply relative font-serif text-3xl text-yellow-50
+}
+
+.pageMainDiv {
+    @apply relative w-full md:w-[80%] lg:w-[60%] h-full flex flex-col overflow-y-scroll
+}

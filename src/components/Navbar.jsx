@@ -93,17 +93,39 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <div className={`relative w-full flex flex-row justify-evenly py-4 my-4 bg-[#3b0764] rounded-lg`}>
-        <a href={`/`} className={`font-mono font-bold text-lg`}>
+      <div
+        className={`relative w-full flex flex-row justify-evenly py-2 my-2 bg-[#3b0764] rounded-lg`}
+      >
+        <a
+          href={`/`}
+          className={`font-mono font-semibold text-md px-4 py-2 rounded-lg ${
+            pathname === "/" ? "text-yellow-500 font-extrabold text-lg" : ""
+          }`}
+        >
           Add Url
         </a>
-        <a href={`/top-100-urls`} className={`font-mono font-bold text-lg`}>
+        <a
+          href={`/top-100-urls`}
+          className={`font-mono font-semibold text-md px-4 py-2 rounded-lg ${
+            pathname === "/top-100-urls" ? "text-yellow-500 font-extrabold text-lg" : ""
+          }`}
+        >
           Top 100 Urls
         </a>
-        <a href={`/all-urls`} className={`font-mono font-bold text-lg`}>
+        <a
+          href={`/all-urls`}
+          className={`font-mono font-semibold text-md px-4 py-2 rounded-lg ${
+            pathname === "/all-urls" ? "text-yellow-500 font-extrabold text-lg" : ""
+          }`}
+        >
           All Urls
         </a>
-        <a href={`/search-urls`} className={`font-mono font-bold text-lg`}>
+        <a
+          href={`/search-urls`}
+          className={`font-mono font-semibold text-md px-4 py-2 rounded-lg ${
+            pathname === "/search-urls" ? "text-yellow-500 font-extrabold text-lg" : ""
+          }`}
+        >
           Search Urls
         </a>
       </div>

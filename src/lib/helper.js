@@ -30,7 +30,7 @@ export const createNewShortUrlHandler = async (full_url) => {
   } catch (error) {
     if (error.response) {
       const data = error.response.data.errors;
-      let message = data.reduce((msg, val, idx) => msg += `${val} `);
+      let message = data.reduce((msg, val, idx) => (msg += `${val} `));
 
       return {
         status: false,
@@ -39,8 +39,7 @@ export const createNewShortUrlHandler = async (full_url) => {
         shortUrl: "",
         error: error,
       };
-    }
-    else {
+    } else {
       return {
         status: false,
         message: "Unable to create short url.",
@@ -48,15 +47,55 @@ export const createNewShortUrlHandler = async (full_url) => {
         shortUrl: "",
         error: error,
       };
-
     }
   }
 };
 
-export const fetchTop100LinksHandler = async () => {
+export const fetchLinksListHandler = async (
+  fetchAllLinks = false,
+) => {
   try {
+    let reqUrl = '';
+    if (fetchAllLinks) {
+      reqUrl = `${BASE_URL}/short_urls/all_urls`;
+    }
+    else {
+      reqUrl = `${BASE_URL}`;
+    }
     const res = await axios.get(`${BASE_URL}`);
-  } catch (error) {
 
+    if (res.status >= 0 && res.status < 300) {
+      const data = res.data;
+      
+      if (data.urls) {
+        return {
+          status: true,
+          message: "Successfully fetched top 100 links.",
+          urls: JSON.parse(data.urls),
+          error: null,
+        };
+      } else {
+        return {
+          status: false,
+          message: "Successfully fetched top 100 links.",
+          urls: res.data,
+          error: null,
+        };
+      }
+    } else {
+      return {
+        status: false,
+        message: "Unable to fetch top 100 links list.",
+        urls: res.data,
+        error: null,
+      };
+    }
+  } catch (error) {
+    return {
+      status: false,
+      message: "Unable to fetch top 100 links list.",
+      urls: [],
+      error: error,
+    };
   }
 };
