@@ -14,6 +14,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import CareerPage from "./pages/CareerPage";
 import Top100Urls from "./pages/Top100Urls";
 import AllUrls from "./pages/AllUrls";
+import SearchUrl from "./pages/SearchUrl";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/career" element={<CareerPage />} />
           <Route path="/top-100-urls" element={<Top100Urls />} />
           <Route path="/all-urls" element={<AllUrls />} />
+          <Route path="/search-urls" element={<SearchUrl />} />
         </Routes>
       </Layout>
     </Router>

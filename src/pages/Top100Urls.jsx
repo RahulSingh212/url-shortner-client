@@ -35,10 +35,10 @@ const Top100Urls = () => {
   return (
     <div className={`pageContainerDiv`}>
       <h1 className={`pageH1Head`}>Top 100 Urls</h1>
-      <div className={`pageMainDiv mt-4`}>
-        <span className="relative w-full px-3 py-2 rounded-md mb-3 text-center font-semibold text-lg">
+      <div className={`pageMainDiv`}>
+        {/* <span className="relative w-full px-3 py-2 rounded-md mb-3 text-center font-semibold text-lg text-black">
           {responseMsg}
-        </span>
+        </span> */}
         {Array.isArray(top100LinkList) && top100LinkList.length > 0 && (
           <div className={`relative w-full flex flex-col space-y-1`}>
             {top100LinkList.map((urlInfo, index) => (

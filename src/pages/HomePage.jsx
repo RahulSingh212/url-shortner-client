@@ -41,7 +41,7 @@ const HomePage = () => {
 
   return (
     <div
-      className={`relative w-[100%] flex flex-col h-full align-middle items-center`}
+      className={`pageContainerDiv`}
     >
       <h1 className={`pageH1Head`}>URL Shortner</h1>
       <div
