@@ -44,6 +44,7 @@ const Top100Urls = () => {
             {top100LinkList.map((urlInfo, index) => (
               <TabInfoSection
                 key={index}
+                dbId={urlInfo.id}
                 fullUrlValue={urlInfo.full_url}
                 pageTitle={urlInfo.title}
                 clickCount={urlInfo.click_count}

@@ -35,7 +35,7 @@ const TabSection = ({ heading, value }) => {
           className={`cursor-pointer hover:shadow-md`}
         >
           <img
-            src="/images/url-link-icon.svg"
+            src="/images/newtab-icon.svg"
             alt="icon"
             className={`rounded-md mx-auto  h-10 w-10 px-1 bg-white border-[1px] border-yellow-300`}
           />

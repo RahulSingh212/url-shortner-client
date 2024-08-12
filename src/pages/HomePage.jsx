@@ -43,9 +43,7 @@ const HomePage = () => {
     <div
       className={`relative w-[100%] flex flex-col h-full align-middle items-center`}
     >
-      <h1 className={`pageH1Head`}>
-        URL Shortner
-      </h1>
+      <h1 className={`pageH1Head`}>URL Shortner</h1>
       <div
         className={`relative w-full md:w-[80%] lg:w-[60%] flex flex-col p-4 rounded-lg bg-white mt-4`}
       >
@@ -55,15 +53,29 @@ const HomePage = () => {
             onSubmit={onSubmitHandler}
           >
             <input
+              disabled={isLoading}
               className={`relative w-full py-3 px-2 border-2 border-yellow-500 rounded-lg text-black`}
               placeholder={`Enter your full url`}
               ref={inputRef}
             />
             <button
+              disabled={isLoading}
               className={`relative flex align-middle items-center py-2 px-6 rounded-md mx-auto font-semibold bg-orange-400`}
               onClick={onSubmitHandler}
             >
-              {`Shorten URL`}
+              {isLoading && (
+                <div
+                  className={`relative flex flex-row space-x-1 align-middle items-center`}
+                >
+                  <img
+                    src="/gif/loading.gif"
+                    alt="icon"
+                    className={`rounded-md mx-auto  h-7 w-7  bg-orange-400 fill-[white] `}
+                  />
+                  <span>{`Loading...`}</span>
+                </div>
+              )}
+              {!isLoading && <span>{`Shorten URL`}</span>}
             </button>
           </form>
         )}
