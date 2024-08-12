@@ -5,12 +5,15 @@ const PageContext = createContext();
 
 // Create a Provider Component
 const PageProvider = ({ children }) => {
-  const [top100LinkLists, setTop100LinkLists] = useState('light');
+  const [top100LinkList, setTop100LinkList] = useState([]);
+  const [allLinkList, setAllLinkList] = useState([]);
 
 
   const pageValue = {
-    top100LinkLists,
-    setTop100LinkLists
+    top100LinkList,
+    setTop100LinkList,
+    allLinkList,
+    setAllLinkList
   }
 
   return (

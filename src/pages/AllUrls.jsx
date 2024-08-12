@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { PageContext } from "../context/PageContext";
 
 const AllUrls = () => {
+  const { allLinkList } = useContext(PageContext);
 
   return (
     <div>

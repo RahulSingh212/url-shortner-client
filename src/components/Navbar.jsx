@@ -94,14 +94,17 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`relative w-full flex flex-row justify-evenly py-4 my-4 bg-[#3b0764] rounded-lg`}>
-        <a href={`/`} className={`font-serif font-bold text-lg`}>
+        <a href={`/`} className={`font-mono font-bold text-lg`}>
           Add Url
         </a>
-        <a href={`/top-100-urls`} className={`font-serif font-bold text-lg`}>
+        <a href={`/top-100-urls`} className={`font-mono font-bold text-lg`}>
           Top 100 Urls
         </a>
-        <a href={`/all-urls`} className={`font-serif font-bold text-lg`}>
+        <a href={`/all-urls`} className={`font-mono font-bold text-lg`}>
           All Urls
+        </a>
+        <a href={`/search-urls`} className={`font-mono font-bold text-lg`}>
+          Search Urls
         </a>
       </div>
     </nav>

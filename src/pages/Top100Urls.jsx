@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { PageContext } from "../context/PageContext";
 
 const Top100Urls = () => {
+  const { top100LinkList } = useContext(PageContext);
 
   return (
     <div>
