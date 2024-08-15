@@ -45,7 +45,7 @@ const HomePage = () => {
     >
       <h1 className={`pageH1Head`}>URL Shortner</h1>
       <div
-        className={`relative w-full md:w-[80%] lg:w-[60%] flex flex-col p-4 rounded-lg bg-white mt-4`}
+        className={`relative w-[90%] md:w-[80%] lg:w-[60%] flex flex-col p-4 rounded-lg bg-white mt-4`}
       >
         {!showMsg && (
           <form

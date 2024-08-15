@@ -7,13 +7,16 @@ const PageContext = createContext();
 const PageProvider = ({ children }) => {
   const [top100LinkList, setTop100LinkList] = useState([]);
   const [allLinkList, setAllLinkList] = useState([]);
+  const [sideBar, setSideBar] = useState(false);
 
 
   const pageValue = {
     top100LinkList,
     setTop100LinkList,
     allLinkList,
-    setAllLinkList
+    setAllLinkList,
+    sideBar,
+    setSideBar,
   }
 
   return (
