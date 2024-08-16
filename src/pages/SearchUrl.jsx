@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
+import { PageContext } from "../context/PageContext";
 import { fetchSearchedUrlLists } from "../lib/helper";
 import TabInfoSection from "../components/sections/TabInfoSection";
+import { SEARCH_LINKS_LIST } from "../lib/helper";
 
 const SearchUrl = () => {
+  const { searchList, setSearchList } = useContext(PageContext);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [showMsg, setShowMsg] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchList, setSearchList] = useState([]);
   const [responseMsg, setResponseMsg] = useState("");
 
   const inputRef = useRef(null);
@@ -83,11 +85,13 @@ const SearchUrl = () => {
 
         <div className={`relative w-full flex flex-col space-y-1`}>
           {searchList.length > 0 && (
-            <div className={`relative w-full flex flex-col space-y-1`}>
+            <div className={`relative w-full flex flex-col space-y-2`}>
               {searchList.map((urlInfo, index) => (
                 <TabInfoSection
                   key={index}
+                  listIdx={index}
                   dbId={urlInfo.id}
+                  listType={SEARCH_LINKS_LIST}
                   fullUrlValue={urlInfo.full_url}
                   pageTitle={urlInfo.title}
                   clickCount={urlInfo.click_count}

@@ -1,6 +1,12 @@
 import axios from "axios";
+import { idEncryptor } from "./handler";
 
 export const BASE_URL = "http://localhost:3000";
+
+export const TOP_100_LINKS_LIST = "TOP-100-LINKS-LIST";
+export const ALL_LINKS_LIST = "ALL-LINKS-LIST";
+export const SEARCH_LINKS_LIST = "SEARCH-LINKS-LIST";
+
 
 export const createNewShortUrlHandler = async (full_url) => {
   try {
@@ -139,3 +145,36 @@ export const fetchSearchedUrlLists = async (url_name) => {
     };
   }
 };
+
+export const removeRecordHandler = async (dbId) => {
+  const eId = idEncryptor(dbId);
+  let reqUrl = `${BASE_URL}/short_urls/${eId}`;
+  
+  try {
+    const res = await axios.delete(reqUrl);
+
+    if (res.status >= 200 && res.status < 300) {
+      return {
+        status: true,
+        message: "Successfully deleted the record from the db.",
+        error: null,
+      };
+    }
+    else {
+      return {
+        status: false,
+        message: "Unable to delete the record.",
+        error: null,
+      };
+    }
+  }
+  catch (error) {
+    console.log(error);
+    return {
+      status: false,
+      message: "Unable to delete the record.",
+      error: error,
+    };
+  }
+
+}

@@ -1,21 +1,72 @@
+import { useState, useContext } from "react";
+import { PageContext } from "../../context/PageContext";
 import { idEncryptor } from "../../lib/handler";
-import { BASE_URL } from "../../lib/helper";
+import {
+  BASE_URL,
+  TOP_100_LINKS_LIST,
+  ALL_LINKS_LIST,
+  SEARCH_LINKS_LIST,
+} from "../../lib/helper";
 
-const TabInfoSection = ({ dbId, fullUrlValue, clickCount, pageTitle }) => {
-  const copyBtnHandler = async () => {
-    const eId = idEncryptor(dbId);
-    if (!eId) {
-      alert("Invalid request!");
-      return;
+import { removeRecordHandler } from "../../lib/helper";
+
+const TabInfoSection = ({
+  listIdx,
+  dbId,
+  listType,
+  fullUrlValue,
+  clickCount,
+  pageTitle,
+}) => {
+  const {
+    top100LinkList,
+    setTop100LinkList,
+    allLinkList,
+    setAllLinkList,
+    searchList,
+    setSearchList,
+  } = useContext(PageContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+  const removeTabInfoHandler = async () => {
+    setIsLoading(true);
+    setSuccess(false);
+    setError(false);
+    const res = await removeRecordHandler(dbId);
+
+    if (res.status) {
+      if (listType === TOP_100_LINKS_LIST) {
+        let newList = [...top100LinkList];
+        newList.splice(listIdx, 1);
+        setTop100LinkList(newList);
+      } else if (listType === ALL_LINKS_LIST) {
+        let newList = [...allLinkList];
+        newList.splice(listIdx, 1);
+        setAllLinkList(newList);
+      } else if (listType === SEARCH_LINKS_LIST) {
+        let newList = [...searchList];
+        newList.splice(listIdx, 1);
+        setSearchList(newList);
+      }
+      setSuccess(true);
+    } else {
+      setError(false);
     }
-
-    const shortUrl = `${BASE_URL}/${eId}`;
+    setIsLoading(false);
   };
 
   return (
     <div
       className={`relative w-full flex-col bg-gray-200 rounded-md px-3 py-2 mt-1`}
     >
+      <img
+        src={`/images/cross-icon.svg`}
+        alt={`optoin`}
+        className={`absolute -top-2 -right-3 p-[2px] rounded-full h-8 w-8 cursor-pointer hover:bg-gray-200`}
+        onClick={removeTabInfoHandler}
+      />
       <div className={`relative w-full`}>
         <div className={`relative w-full flex flex-col`}>
           <span className={`relative text-black font-mono font-semibold`}>
@@ -123,7 +174,7 @@ const TabInfoSection = ({ dbId, fullUrlValue, clickCount, pageTitle }) => {
               }
 
               const shortUrl = `${BASE_URL}/${eId}`;
-              window.open(shortUrl, '_blank', 'noopener,noreferrer');
+              window.open(shortUrl, "_blank", "noopener,noreferrer");
             }}
           >
             <img

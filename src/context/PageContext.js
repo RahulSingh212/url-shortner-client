@@ -7,16 +7,23 @@ const PageContext = createContext();
 const PageProvider = ({ children }) => {
   const [top100LinkList, setTop100LinkList] = useState([]);
   const [allLinkList, setAllLinkList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const [sideBar, setSideBar] = useState(false);
 
+  const removeShortUrlHandler = async (dbId, isTopList = true) => {
+    
+  }
 
   const pageValue = {
     top100LinkList,
     setTop100LinkList,
     allLinkList,
     setAllLinkList,
+    searchList,
+    setSearchList,
     sideBar,
     setSideBar,
+    removeShortUrlHandler,
   }
 
   return (
